@@ -431,35 +431,46 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
 
 // Cargar productos destacados
 async function loadFeaturedProducts() {
-    const productCarousel = document.getElementById('product-carousel');
-    if (!productCarousel) return;
+    const carousel = document.getElementById('carousel');
+    if (!carousel) return;
 
-    // Mostrar spinner de carga
-    productCarousel.innerHTML = `
-        <div class="col-span-full text-center py-8">
-            <div class="spinner"></div>
-            <p class="text-gray-600 mt-4">Cargando productos...</p>
-        </div>
-    `;
+    // Limpia los ítems anteriores
+    carousel.innerHTML = '';
 
     try {
-        // Asegúrate de que la ruta a tu API sea correcta.
-        // Si main.js está en '../js/', y 'productos.php' en '/api/', la ruta absoluta desde la raíz del dominio sería '/api/productos.php'
-        // Si el servidor web tiene el proyecto en un subdirectorio, por ejemplo 'web_jr', la ruta sería '/web_jr/api/productos.php'
-        const response = await fetch('/api/productos.php'); // Asumiendo que 'api' está en la raíz del sitio
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        const response = await fetch('/web_jr/api/productos_destacados.php?limite=6');
+        if (!response.ok) throw new Error('Error de red');
         const productos = await response.json();
-        renderProductCarousel(productos);
+
+        if (productos.length === 0) {
+            carousel.innerHTML = `<p class="text-center text-gray-600">No hay productos destacados disponibles.</p>`;
+            return;
+        }
+
+        productos.forEach((producto, index) => {
+            const item = document.createElement('div');
+            item.className = `carousel-item item-${index + 1}`;
+            item.innerHTML = `
+                <div class="bg-white rounded-lg shadow-md p-4 text-center">
+                    <img src="../images/productos/${producto.id}.jpg" alt="${producto.descripcion}" class="w-full h-40 object-cover rounded">
+                    <h3 class="mt-2 font-bold text-lg">${producto.descripcion}</h3>
+                    <p class="text-sm text-gray-600">${producto.medida || ''}</p>
+                    <p class="text-orange-600 font-bold mt-1">$${producto.precio.toLocaleString('es-CL')}</p>
+                </div>
+            `;
+            carousel.appendChild(item);
+        });
+
+        // Actualiza el array de ítems del carrusel 3D
+        items = Array.from(carousel.children);
+        resetCarousel(0); // función ya definida en tu main.js
+
     } catch (error) {
         console.error('Error cargando productos destacados:', error);
-        productCarousel.innerHTML = `
-            <p class="text-red-500 text-center py-8">No se pudieron cargar los productos destacados. Por favor intenta más tarde.</p>
-        `;
+        carousel.innerHTML = `<p class="text-red-500 text-center py-8">No se pudieron cargar los productos destacados.</p>`;
     }
 }
+
 
 // Renderizar carrusel de productos
 function renderProductCarousel(productos) {
@@ -523,5 +534,11 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFeaturedProducts();
     
     // Actualizar carrito al cargar la página
+    updateCart();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    initHeroCarousel();
+    loadFeaturedProducts(); // <- esta es la nueva
     updateCart();
 });
