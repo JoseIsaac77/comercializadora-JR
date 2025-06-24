@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JR | Comercializadora de Productos Lácteos</title>
+    <meta name="description" content="JR Comercializadora y Distribuidora de productos Colun. Llevamos la frescura y calidad de los lácteos del sur de Chile a la quinta región. Confianza, cercanía y eficiencia en cada entrega." />
+    <meta name="keywords" content="Colun, lácteos, distribuidora, comercializadora, quinta región, Chile, productos lácteos, frescura, calidad, JR" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="shortcut icon" href="./images/logo_favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <script src="https://kit.fontawesome.com/fa9d468dc0.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100 font-sans flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="header-logo">
+                <a href="./public/index.html">
+                    <img src="./images/logo400x300.png" alt="JR Comercializadora y Distribuidora" class="h-12">
+                </a>
+            </div>
+            
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="./public/index.html" class="text-gray-800 hover:text-orange-600 transition">Inicio</a></li>
+                    <li><a href="#" class="text-gray-800 hover:text-orange-600 transition">Quiénes Somos</a></li>
+                    <li><a href="#" class="text-gray-800 hover:text-orange-600 transition">Productos</a></li>
+                    <li><a href="#" class="text-gray-800 hover:text-orange-600 transition">Conversemos</a></li>
+                    <li><button id="search-button" class="text-gray-800 hover:text-orange-600 transition" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></li>
+                </ul>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="cart-button" class="relative text-gray-800 hover:text-orange-600 transition" aria-label="Ver carrito de compras">
+                    <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                    <span id="cart-count" class="hidden absolute -top-2 -right-2 bg-orange-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">0</span>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden text-2xl text-gray-800" aria-label="Abrir menú móvil">☰</button>
+            </div>
+        </div>
+        
+        <nav id="mobile-menu" class="hidden md:hidden bg-white p-4 border-t" aria-label="Menú de navegación móvil">
+            <ul class="space-y-3">
+                <li><a href="./public/index.html" class="block py-2 text-gray-800 hover:text-orange-600 transition">Inicio</a></li>
+                <li><a href="#" class="block py-2 text-gray-800 hover:text-orange-600 transition">Quiénes Somos</a></li>
+                <li><a href="#" class="block py-2 text-gray-800 hover:text-orange-600 transition">Productos</a></li>
+                <li><a href="#" class="block py-2 text-gray-800 hover:text-orange-600 transition">Conversemos</a></li>
+            </ul>
+        </nav>
+        
+        <div id="search-bar" class="hidden container mx-auto px-4 py-3 bg-gray-100">
+            <div class="relative">
+                <input type="text" placeholder="Buscar productos..." class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" aria-label="Campo de búsqueda de productos">
+                <button class="absolute right-3 top-2 text-gray-500 hover:text-orange-600" aria-label="Ejecutar búsqueda">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section >
+     <section class="relative overflow-hidden h-screen"> 
+        <div class="glide hero-carousel h-full"> 
+            <div class="glide__track h-full" data-glide-el="track"> 
+                <ul class="glide__slides h-full"> 
+                    <li class="glide__slide relative">
+                        <div class="absolute inset-0 bg-black opacity-30">
+                            <img src="../images/background_1.jpg" alt="Productos lácteos JR Comercializadora" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                                    <div class="container mx-auto px-4 py-32 md:py-40 flex flex-col items-center text-center">
+                                        <h2 class="text-lg md:text-xl font-light tracking-widest mb-4 animate__animated animate__fadeIn">Traemos la magia del Sur</h2>
+                                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate__animated animate__fadeInUp">A su mesa</h1>
+                                        <p class="text-lg md:text-xl mb-8 max-w-2xl animate__animated animate__fadeIn animate__delay-1s" id="txt-hero">
+                                            <span class="font-bold text-orange-600 px-2 py-1 rounded" id="span2-jr">JR</span> Comercializadora y distribuidora de productos
+                                        </p>
+                                        <div class="flex flex-wrap justify-center gap-4 animate__animated animate__fadeInUp animate__delay-1s">
+                                            <a href="../pages/productos.php" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 btn-effect" id="btn-ver">Ver Productos</a>
+                                            <a href="../pages/conversemos.php" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-orange-600 transition duration-300 btn-effect" id="btn-contactar">Contactar</a>
+                                        </div>
+                                        <div class="mt-12 flex flex-wrap justify-center gap-6" id="colun-logo-container">
+                                            <img src="../images/logo_colun_web_1.webp" alt="Colun" class="h-12 md:h-16 opacity-90 hover:opacity-100 transition" id="logo-colun">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </li>
+                        
+                    <li class="glide__slide relative">
+                        <div class="absolute inset-0 bg-black opacity-30">
+                            <img src="../images/background_2.jpg" alt="Productos de calidad JR" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                                <div class="container mx-auto px-4 py-32 md:py-40 flex flex-col items-center text-center">
+                                    <h2 class="text-lg md:text-xl font-light tracking-widest mb-4 animate__animated animate__fadeIn">Productos seleccionados</h2>
+                                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate__animated animate__fadeInUp">Calidad garantizada</h1>
+                                    <p class="text-lg md:text-xl mb-8 max-w-2xl animate__animated animate__fadeIn animate__delay-1s">
+                                        Los mejores productos lácteos del sur de Chile
+                                    </p>
+                                    <div class="flex flex-wrap justify-center gap-4 animate__animated animate__fadeInUp animate__delay-1s">
+                                        <a href="../pages/productos.php" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 btn-effect">Ver Catálogo</a>
+                                        <a href="../pages/conversemos.php" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-orange-600 transition duration-300 btn-effect">Solicitar muestra</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </li>
+                        
+                    <li class="glide__slide relative">
+                        <div class="absolute inset-0 bg-black opacity-30"></div>
+                            <img src="../images/background_3.png" alt="Distribución eficiente JR" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                                <div class="container mx-auto px-4 py-32 md:py-40 flex flex-col items-center text-center">
+                                    <h2 class="text-lg md:text-xl font-light tracking-widest mb-4 animate__animated animate__fadeIn">Servicio confiable</h2>
+                                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate__animated animate__fadeInUp">Distribución eficiente</h1>
+                                    <p class="text-lg md:text-xl mb-8 max-w-2xl animate__animated animate__fadeIn animate__delay-1s">
+                                        Entregamos en todo el país con los más altos estándares
+                                    </p>
+                                    <div class="flex flex-wrap justify-center gap-4 animate__animated animate__fadeInUp animate__delay-1s">
+                                        <a href="../pages/conversemos.php" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 btn-effect">Consultar cobertura</a>
+                                       <a href="../pages/conversemos.php" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-orange-600 transition duration-300 btn-effect">Ser distribuidor</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="glide__bullets" data-glide-el="controls[nav]">
+                    <button class="glide__bullet" data-glide-dir="=0" aria-label="Ir a slide 1"></button>
+                    <button class="glide__bullet" data-glide-dir="=1" aria-label="Ir a slide 2"></button>
+                    <button class="glide__bullet" data-glide-dir="=2" aria-label="Ir a slide 3"></button>
+                </div>
+            </div>    
+        </div>
+    </section-->
+
+    <!--section class="relative overflow-hidden h-[90vh] min-h-[600px]">
+        <div class="glide hero-carousel h-full">
+            <div class="glide__track h-full" data-glide-el="track">
+                <ul class="glide__slides h-full">
+                    < Slide 1>
+                    <li class="glide__slide relative h-full">
+                        <div class="absolute inset-0 bg-black/30 z-10"></div>
+                        <img src="../images/background_1.png" alt="Productos lácteos JR Comercializadora" class="w-full h-full object-cover" id="img1">
+                        <div class="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
+                            <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                                    <div class="container mx-auto px-4 py-32 md:py-40 flex flex-col items-center text-center">
+                                        <h2 class="text-lg md:text-xl font-light tracking-widest mb-4 animate__animated animate__fadeIn">Traemos la magia del Sur</h2>
+                                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate__animated animate__fadeInUp">A su mesa</h1>
+                                        <p class="text-lg md:text-xl mb-8 max-w-2xl animate__animated animate__fadeIn animate__delay-1s" id="txt-hero">
+                                            <span class="font-bold text-orange-600 px-2 py-1 rounded" id="span2-jr">JR</span> Comercializadora y distribuidora de productos
+                                        </p>
+                                        <div class="flex flex-wrap justify-center gap-4 animate__animated animate__fadeInUp animate__delay-1s">
+                                            <a href="../pages/productos.php" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 btn-effect" id="btn-ver">Ver Productos</a>
+                                            <a href="../pages/conversemos.php" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-orange-600 transition duration-300 btn-effect" id="btn-contactar">Contactar</a>
+                                        </div>
+                                        <div class="mt-12 flex flex-wrap justify-center gap-6" id="colun-logo-container">
+                                            <img src="../images/logo_colun_web_1.webp" alt="Colun" class="h-12 md:h-16 opacity-90 hover:opacity-100 transition" id="logo-colun">
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </li>
+                    
+                    <li class="glide__slide relative h-full">
+                        <div class="absolute inset-0 bg-black/30 z-10"></div>
+                    <img src="../images/background_2.png" alt="Productos de calidad JR" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
+                                <div class="container mx-auto px-4 py-32 md:py-40 flex flex-col items-center text-center">
+                                    <h2 class="text-lg md:text-xl font-light tracking-widest mb-4 animate__animated animate__fadeIn">Productos seleccionados</h2>
+                                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate__animated animate__fadeInUp">Calidad garantizada</h1>
+                                    <p class="text-lg md:text-xl mb-8 max-w-2xl animate__animated animate__fadeIn animate__delay-1s">
+                                        Los mejores productos lácteos del sur de Chile
+                                    </p>
+                                    <div class="flex flex-wrap justify-center gap-4 animate__animated animate__fadeInUp animate__delay-1s">
+                                        <a href="../pages/productos.php" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 btn-effect">Ver Catálogo</a>
+                                        <a href="../pages/conversemos.php" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-orange-600 transition duration-300 btn-effect">Solicitar muestra</a>
+                                    </div>
+                                </div>
+                            </div>
+                    </li>
+
+                    <li class="glide__slide relative h-full">
+                        <div class="absolute inset-0 bg-black/30 z-10"></div>
+                    <img src="../images/background_3.png" alt="Distribución eficiente JR" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
+                                <div class="container mx-auto px-4 py-32 md:py-40 flex flex-col items-center text-center">
+                                    <h2 class="text-lg md:text-xl font-light tracking-widest mb-4 animate__animated animate__fadeIn">Servicio confiable</h2>
+                                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate__animated animate__fadeInUp">Distribución eficiente</h1>
+                                    <p class="text-lg md:text-xl mb-8 max-w-2xl animate__animated animate__fadeIn animate__delay-1s">
+                                        Entregamos en todo el país con los más altos estándares
+                                    </p>
+                                    <div class="flex flex-wrap justify-center gap-4 animate__animated animate__fadeInUp animate__delay-1s">
+                                        <a href="../pages/conversemos.php" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 btn-effect">Consultar cobertura</a>
+                                       <a href="../pages/conversemos.php" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-orange-600 transition duration-300 btn-effect">Ser distribuidor</a>
+                                    </div>
+                                </div>
+                            </div>
+                    </li>
+                     
+                </ul>
+            </div>
+        
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+                <button class="glide__bullet" data-glide-dir="=0" aria-label="Ir a slide 1"></button>
+                <button class="glide__bullet" data-glide-dir="=1" aria-label="Ir a slide 2"></button>
+                <button class="glide__bullet" data-glide-dir="=2" aria-label="Ir a slide 3"></button>
+            </div>
+        </div>
+    </section -->
+
+    <!-- Carrusel Hero -->
+    <div class="relative w-full h-screen overflow-hidden">
+        <!-- Slides container -->
+        <div id="slides-container" class="flex h-full transition-transform duration-500 ease-in-out">
+            <!-- Slide 1 -->
+            <div class="min-w-full h-full relative">
+                <div class="absolute inset-0 bg-black opacity-40"></div>
+                <img src="./images/background_1.png" alt="Nature" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                    <div class="max-w-4xl mx-auto text-white" id="slide">
+                        <h3 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">Traemos la magia del Sur</h3>
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">A su mesa</h1>
+                        <p class="text-xl md:text-2xl mb-8 animate-fadeIn delay-100">
+                            <span class="font-bold text-orange-600 px-2 py-1 rounded" id="span2-jr">JR</span> Comercializadora y distribuidora de productos
+                        </p>
+                        <div class="mt-12 flex flex-wrap justify-center gap-6" id="colun-logo-container">
+                            <img src="./images/logo_colun_web_1.webp" alt="Colun" class="h-12 md:h-16 opacity-90 hover:opacity-100 transition" id="logo-colun">
+                        </div>
+                        <!--button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 animate-fadeIn delay-200">Ver más</!--button-->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="min-w-full h-full relative">
+                <div class="absolute inset-0 bg-black opacity-40"></div>
+                <img src="./images/background_2.png" alt="City" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                    <div class="max-w-4xl mx-auto text-white" id="slide">
+                        <h3 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">Productos seleccionados</h3>
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">Calidad garantizada</h1>
+                        <p class="text-xl md:text-2xl mb-8 animate-fadeIn delay-100">Los mejores productos lácteos del sur de Chile.</p>
+                        <!--button class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 animate-fadeIn delay-200">Explorar</!--button-->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="min-w-full h-full relative">
+                <div class="absolute inset-0 bg-black opacity-40"></div>
+                <img src="./images/background_3.png" alt="Technology" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                    <div class="max-w-4xl mx-auto text-white" id="slide">
+                        <h3 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">Servicio confiable</h3>
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">Distribución eficiente</h1>
+                        <p class="text-xl md:text-2xl mb-8 animate-fadeIn delay-100">Entregamos en toda la V región con los más altos estándares.</p>
+                        <!--button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 animate-fadeIn delay-200">Aprender más</!--button-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation arrows -->
+        <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white p-2 rounded-full z-10 transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white p-2 rounded-full z-10 transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+        
+        <!-- Navigation dots -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+            <button class="dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition duration-300" data-index="0"></button>
+            <button class="dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition duration-300" data-index="1"></button>
+            <button class="dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition duration-300" data-index="2"></button>
+        </div>
+    </div>
+
+    <!-- Custom animations -->
+    <style>
+        #slide h3 {
+            font-size: 35px;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.9);
+        }
+
+        #slide h1 {
+            font-size: 80px;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.9);
+        }
+
+        #slide p {
+            font-weight: 500;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.9);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .delay-100 {
+            animation-delay: 0.2s;
+        }
+        .delay-200 {
+            animation-delay: 0.4s;
+        }
+    </style>
+
+    <!-- JavaScript for carousel functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slidesContainer = document.getElementById('slides-container');
+            const slides = document.querySelectorAll('.min-w-full');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            
+            // Update carousel position
+            function updateCarousel() {
+                slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update active dot
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.remove('bg-white/50');
+                        dot.classList.add('bg-white');
+                        dot.classList.add('w-4');
+                    } else {
+                        dot.classList.add('bg-white/50');
+                        dot.classList.remove('bg-white');
+                        dot.classList.remove('w-4');
+                    }
+                });
+            }
+            
+            // Next slide
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+            
+            // Auto-play
+            let interval = setInterval(nextSlide, 4900);
+            
+            // Pause on hover
+            slidesContainer.parentElement.addEventListener('mouseenter', () => {
+                clearInterval(interval);
+            });
+            
+            slidesContainer.parentElement.addEventListener('mouseleave', () => {
+                interval = setInterval(nextSlide, 4900);
+            });
+            
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    currentIndex = parseInt(dot.getAttribute('data-index'));
+                    updateCarousel();
+                });
+            });
+            
+            // Initialize
+            updateCarousel();
+        });
+    </script>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">¿Por qué elegir JR Comercializadora?</h2>
+            <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
+                
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-blue-500">
+                    <i class="fa-solid fa-handshake text-5xl text-blue-600 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3">Confianza en cada entrega</h3>
+                        <p class="text-gray-600">
+                            Nos comprometemos con un servicio fiable y transparente, asegurando que tus productos lleguen siempre en perfecto estado.
+                        </p>
+                </div>
+                <div class="p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-red-500">
+                    <i class="fa-solid fa-heart text-5xl text-orange-600 mb-4" id="heart"></i>
+                    <h3 class="text-xl font-bold mb-3">Cercanía y Soporte</h3>
+                    <p class="text-gray-600">
+                        Estamos cerca de ti en la Quinta Región, ofreciendo atención personalizada y resolviendo tus dudas rápidamente.
+                    </p>
+                </div>
+               <div class="p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-green-500">
+                    <i class="fa-solid fa-seedling text-5xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Frescura Garantizada</h3>
+                    <p class="text-gray-600">
+                        Desde el sur de Chile, traemos productos Colun con la frescura y calidad que tus clientes merecen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <main class="container mx-auto px-4 py-16" id="carousel-productos">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Productos Destacados</h2>
+            <div class="w-20 h-1 bg-orange-600 mx-auto"></div>
+        </div>
+        
+        <div id="carousel-container">
+            <!--div class="text-center mt-12">
+                <a href="../pages/productos.php" class="inline-block border-2 border-orange-600 text-orange-600 font-bold px-8 py-3 rounded-full hover:bg-orange-600 hover:text-white transition duration-300">
+                Ver todos los productos
+                </a>
+            </!--div-->
+            <div id="carousel">
+                <!-- Elementos del carrusel -->
+                <div class="carousel-item item-1">1</div>
+                <div class="carousel-item item-2">2</div>
+                <div class="carousel-item item-3">3</div>
+                <div class="carousel-item item-4">4</div>
+                <div class="carousel-item item-5">5</div>
+                <div class="carousel-item item-6">6</div>
+            </div>
+        </div>    
+    </main>
+
+    <!-- Proceso de Compra -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Cómo comprar</h2>
+                <div class="w-20 h-1 bg-orange-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Paso 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                    <div class="bg-orange-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-cart-shopping text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Añade productos</h3>
+                    <p class="text-gray-600">
+                        Selecciona los productos que necesites y añádelos a tu carrito de compras.
+                    </p>
+                    <div class="mt-4 text-orange-600 font-bold">01</div>
+                </div>
+                
+                <!-- Paso 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                    <div class="bg-orange-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-file-invoice text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Comprobante de pago</h3>
+                    <p class="text-gray-600">
+                        Realiza el pago y sube el comprobante para procesar tu pedido.
+                    </p>
+                    <div class="mt-4 text-orange-600 font-bold">02</div>
+                </div>
+                
+                <!-- Paso 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                    <div class="bg-orange-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-truck-fast text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Recibe tu pedido</h3>
+                    <p class="text-gray-600">
+                        Nosotros nos encargamos del despacho y tú disfrutas de tus productos.
+                    </p>
+                    <div class="mt-4 text-orange-600 font-bold">03</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="bg-orange-600 text-white py-16" id="newsletter">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Suscríbete para recibir ofertas</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Recibe las últimas novedades, promociones y descuentos especiales directamente en tu correo.</p>
+            
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+                <input type="email" placeholder="Ingresa tu email" class="flex-grow px-4 py-3 rounded-full focus:outline-none text-gray-800">
+                <button type="submit" class="bg-white text-orange-600 font-bold px-6 py-3 rounded-full hover:bg-gray-100 transition duration-300 whitespace-nowrap">
+                    Suscribirse
+                </button>
+            </form>
+            
+            <p class="text-sm mt-4 opacity-80">No compartiremos tu información. Puedes darte de baja en cualquier momento.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8" id="footer">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Logo y descripción -->
+                <div>
+                    <img src="../images/logo400x300.png" alt="JR Limitada" class="h-12 mb-4">
+                    <p class="text-white-400">
+                        Distribuidora de productos lácteos y alimenticios del sur de Chile, comprometidos con la calidad y el servicio.
+                    </p>
+                </div>
+                
+                <!-- Enlaces rápidos -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2">Enlaces rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../public/index.php" class="text-white-400 hover:text-white transition">Inicio</a></li>
+                        <li><a href="../pages/quienesSomos.php" class="text-white-400 hover:text-white transition">Quienes Somos</a></li>
+                        <li><a href="../pages/productos.php" class="text-white-400 hover:text-white transition">Productos</a></li>
+                        <li><a href="../pages/conversemos.php" class="text-white-400 hover:text-white transition">Conversemos</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contacto -->
+                <div id="contacto">
+                    <h3 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2">Contacto</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-map-marker-alt mt-1 mr-3 text-orange-600"></i>
+                            <span>Calle Falsa 123, Valparaiso, Chile</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone-alt mr-3 text-orange-600"></i>
+                            <span>+56 9 1234 5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-envelope mr-3 text-orange-600"></i>
+                            <span>contacto@jrlimitada.cl</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Redes sociales -->
+                <div id="redes">
+                    <h3 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2">Síguenos</h3>
+                    <div class="flex space-x-4" id="redes-sociales">
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-600 transition" id="a1">
+                            <i class="fa-brands fa-facebook-f" id="i1"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-600 transition" id="a2">
+                            <i class="fa-brands fa-instagram" id="instagram-icon"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-600 transition" id="a3">
+                            <i class="fa-brands fa-whatsapp" id="whatsapp-icon"></i>
+                        </a>
+                        <!--a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-600 transition">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </!--a-->
+                    </div>
+                    
+                    <h3 class="text-lg font-bold mt-6 mb-4 border-b border-gray-700 pb-2">Métodos de pago</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <i class="fa-solid fa-credit-card"> Transferencia</i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center" id="terminos">
+                <p class="text-gray-500 text-sm">© 2023 JR Limitada. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-500 hover:text-white transition text-sm">Términos y condiciones</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition text-sm">Política de privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal del carrito -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-50 hidden">
+        <div class="bg-white w-full sm:w-96 h-full p-6 flex flex-col transform transition-transform duration-300">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Tu Carrito</h3>
+                <button id="close-cart" class="text-gray-600 hover:text-gray-800 text-2xl">&times;</button>
+            </div>
+            
+            <div id="cart-items" class="flex-1 overflow-y-auto mb-4 space-y-4">
+                <!-- Ejemplo de item en carrito -->
+                <!-- <div class="cart-item flex border-b pb-4" data-id="1">
+                    <img src="../images/producto1.jpg" alt="Leche Entera 1L" class="w-16 h-16 object-cover rounded">
+                    <div class="ml-4 flex-grow">
+                        <h4 class="font-bold">Leche Entera 1L</h4>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="flex items-center border rounded">
+                                <button class="decrease-qty px-2">-</button>
+                                <span class="quantity px-2">1</span>
+                                <button class="increase-qty px-2">+</button>
+                            </div>
+                            <span class="item-price font-bold">$1.990</span>
+                        </div>
+                    </div>
+                    <button class="remove-item ml-2 text-red-500 hover:text-red-700">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div> -->
+            </div>
+            
+            <p id="empty-cart-message" class="text-gray-500 text-center py-8">Tu carrito está vacío.</p>
+            
+            <div class="mt-auto border-t pt-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-700">Subtotal:</span>
+                    <span id="cart-subtotal" class="font-bold">$0</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-700">Envío:</span>
+                    <span class="font-bold">$2.500</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold mt-4">
+                    <span>Total:</span>
+                    <span id="cart-total">$2.500</span>
+                </div>
+                <button id="checkout-button" class="mt-6 w-full bg-orange-600 text-white py-3 rounded-lg font-bold hover:bg-orange-700 transition hidden">
+                    Finalizar Compra
+                </button>
+                <a href="../pages/productos.php" class="block mt-4 text-center text-orange-600 hover:text-orange-700 transition">
+                    Seguir comprando
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación -->
+    <div id="notification" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hidden z-50">
+        Producto añadido al carrito!
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="main.js"></script>
+</body>
+</html>

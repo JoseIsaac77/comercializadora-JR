@@ -1,0 +1,426 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* Estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+
+.notification {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.notification.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+/* Efecto hover para las cards de producto */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Estilos para la barra de scroll en el modal del carrito */
+#cart-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+#cart-items::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#cart-items::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+#cart-items::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Estilos para los botones de cantidad en el carrito */
+.quantity {
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 1024px) {
+    .presentation-container h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .presentation-container {
+        width: 80%;
+    }
+    
+    .presentation-container h1 {
+        font-size: 2.5rem;
+    }
+    
+    .destaks-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+    
+    .content {
+        padding: 2rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .presentation-container h1 {
+        font-size: 2rem;
+    }
+    
+    .presentation-container h3 {
+        font-size: 1rem;
+        letter-spacing: 5px;
+    }
+    
+    .form-suscribete {
+        flex-direction: column;
+    }
+    
+    .email {
+        width: 100%;
+    }
+    
+    .suscribete-btn {
+        width: 100%;
+    }
+    
+    #product-carousel {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .presentation-container {
+        margin-top: 150px;
+    }
+    
+    .presentation-container h1 {
+        font-size: 1.8rem;
+    }
+    
+    .brand-logos img {
+        height: 30px;
+    }
+    
+    .process-steps {
+        flex-direction: column;
+    }
+    
+    .step {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Efecto para botones */
+.btn-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-effect:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn-effect:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Loading spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#hero-section{
+    background-image: url(../images/background_1.jpg);
+    background-repeat: no-repeat;
+}
+
+#span2-jr {
+    color: #1565C0;
+}
+
+#colun {
+    margin: 0 0 20px 0;
+}
+
+#logo-colun {
+    height: 5rem;
+    width: 9rem;
+}
+
+#btn-ver {
+    background-color: #FFA726;
+}
+
+#btn-ver:hover {
+    background-color: #f9d423;
+}
+
+#btn-contactar {
+    background-color: #d31900;
+}
+
+#btn-contactar:hover {
+    background-color: #122f51;
+}
+
+.h-12 {
+    height: 4rem;
+    width: 6rem;
+}
+
+/* Responsividad para el hero */
+@media (max-width: 768px) {
+    .hero-carousel h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-carousel h2 {
+        font-size: 1rem !important;
+    }
+    
+    .hero-carousel p {
+        font-size: 1rem !important;
+    }
+    
+    .hero-carousel .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Carrusel Hero mejorado */
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.glide__slide {
+    position: relative;
+    height: 100%;
+}
+
+.glide__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Efecto de superposición mejorado */
+.glide__slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+    z-index: 1;
+}
+
+/* Contenido del slide */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Bullets mejorados */
+.glide__bullets {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    z-index: 3;
+}
+
+.glide__bullet {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.glide__bullet:hover, .glide__bullet--active {
+    background: white;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+#carousel-productos {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+
+#carousel-container {
+    perspective: 1000px;
+    width: 300px;
+    height: 200px;
+    margin: 20px 0px 0px 40px;
+}
+
+#carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: center;
+}
+
+.carousel-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: white;
+    background-color: #3498db;
+    border-radius: 5px;
+    cursor: grab;
+    user-select: none;
+}
+
+#heart {
+    color: #be0001;
+}
+
+#footer {
+    background-color: #1565C0;
+}
+
+#terminos p {
+    color: #F5F5F5;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#terminos a {
+    color: #F5F5F5;
+}
+
+#contacto i {
+    color: #FFA726
+}
+
+#contacto span {
+    color: #F5F5F5;
+}
+
+#redes i {
+    color: #F5F5F5;
+    letter-spacing: 3px;
+}
+
+#newsletter {
+    background-color: #9E9E9E;
+}
+
+#newsletter button {
+    color: #ac0d0d;
+    background-color: transparent;
+    border: 1.5px solid #ac0d0d;
+}
+
+#newsletter button:hover {
+    color: #FFA726;
+    background-color: transparent;
+    border: 1.5px solid #FFA726;
+}
+#a1:hover {
+    background-color: #007bff;
+}
+
+#a2:hover {
+    background-color: #e83e80;;
+}
+
+#a3:hover {
+    background-color: #128c7e;
+}
